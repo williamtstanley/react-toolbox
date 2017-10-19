@@ -2,20 +2,39 @@
   "name": "tool-box",
   "version": "0.0.1",
   "description": "Common react components designed and used by foxworks",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:williamtstanley/react-toolbox.git",
   "author": "W. Travis Stanley https://github.com/williamtstanley",
   "license": "MIT",
+  "scripts": {
+    "watch": "cross-env NODE_ENV=development webpack -w",
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:production": "cross-env NODE_ENV=production webpack -p"
+  },
+  "peerDependency": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.7",
+    "react": "^16.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.0",
     "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
-    "react": "^16.0.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "prop-types": "^15.6.0",
     "react-dom": "^16.0.0",
+    "style-loader": "^0.19.0",
     "webpack": "^3.8.1"
   }
 }

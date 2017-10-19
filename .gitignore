@@ -88,5 +88,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# user specific ignores
+.lvimrc
 
 # End of https://www.gitignore.io/api/node,macos
