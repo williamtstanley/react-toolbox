@@ -31,17 +31,14 @@ export default class Tooltip extends Component {
     });
   }
 
-  buildClassName(defaultClass) {
-    return `${defaultClass} ${this.props.className || ''}`;
+  buildClassName(defaultClass, props = this.props) {
+    return `${props.className ? props.className + ' ' : ''}${defaultClass}`;
   }
 
   renderElement() {
-    const tip = this.props.tip;
-    const className = tip.props.className;
-
     return React.cloneElement(
-      tip, 
-      { className: `${className ? className + ' ' : ''}tool-tip-container` }
+      this.props.tip, 
+      { className: this.buildClassName('tool-tip-container', this.props.tip.props)}
     );
   }
 
