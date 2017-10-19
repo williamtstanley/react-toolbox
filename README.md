@@ -27,11 +27,11 @@ import "tool-box/lib/styles.css";
 
 const MyComponent = (props) => {
     return (
-        <Tooltip tip={<span>This is a basic toolTip</span>}>
-        			<p>
-          	  		Hello World.
-      				</p>
-				</Tooltip>
+      <Tooltip tip={<span>This is a basic toolTip</span>}>
+        <p>
+          Hello World.
+        </p>
+      </Tooltip>
     )
 }
 
@@ -52,11 +52,11 @@ import "tool-box/lib/styles.css";
 
 const MyComponent = (props) => {
     return (
-        <List 
-					listType='ul'
-					list={['one', 'two', 'thee']}
-					renderListItem={(element, index) => <li key={`${index}${element}`}>{element}</li>}
-				/>
+      <List 
+        listType='ul'
+        list={['one', 'two', 'thee']}
+        renderListItem={(element, index) => <li key={`${index}${element}`}>{element}</li>}
+      />
     )
 }
 
