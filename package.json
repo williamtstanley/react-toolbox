@@ -1,0 +1,9 @@
+{
+  "name": "tool-box",
+  "version": "0.0.1",
+  "description": "Common react components designed and used by foxworks",
+  "main": "index.js",
+  "repository": "git@github.com:williamtstanley/react-toolbox.git",
+  "author": "W. Travis Stanley https://github.com/williamtstanley",
+  "license": "MIT"
+}
