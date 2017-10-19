@@ -35,6 +35,16 @@ export default class Tooltip extends Component {
     return `${defaultClass} ${this.props.className || ''}`;
   }
 
+  renderElement() {
+    const tip = this.props.tip;
+    const className = tip.props.className;
+
+    return React.cloneElement(
+      tip, 
+      { className: `${className ? className + ' ' : ''}tool-tip-container` }
+    );
+  }
+
   render() {
     if (!this.props.tip) {
       return null;
@@ -45,7 +55,7 @@ export default class Tooltip extends Component {
         onMouseLeave={this.handleMouseLeave}
         className={this.buildClassName('tool-tip-parent')}
       >
-        {this.state.renderTip ? <div className='tool-tip-container'>{this.props.tip}</div> : null}
+        {this.state.renderTip && this.renderElement()}
         {this.props.children}
       </div>
       );
