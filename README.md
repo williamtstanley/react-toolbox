@@ -8,12 +8,14 @@ This is a react component library containing some commonly used components in ou
 ## Installation
 
 This library is not yet available on npm.
+To install from github run `npm install https://github.com/williamtstanley/react-toolbox` or  `yarn add https://github.com/williamtstanley/react-toolbox`
 
 To install the repo locally rather than via npm. run `npm install` or `yarn install` inside the cloned repo.
-The run `npm link` and inside the project you want to be able to import this in run `npm link tool-box`.
+Then run `npm link` and inside the project you want to be able to import this in run `npm link tool-box`. OR
+Run `npm install file:/path/to/local/folder` or `yarn add file:/path/to/local/folder`
 
 
-## Usage
+# Usage
 
 ## Tooltip
 To use the component, In your react Application just do
