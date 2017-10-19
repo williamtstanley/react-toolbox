@@ -39,6 +39,30 @@ export default MyComponent;
 
 
 ```
-A Tooltip tip is a required prop and can be any valid React element/component.
+
+## List
+To use the component, In your react Application just do
+
+```javascript
+import React from 'react';
+import { List } from 'tool-box';
+
+// import all the styles
+import "tool-box/lib/styles.css";
+
+const MyComponent = (props) => {
+    return (
+        <List 
+					listType='ul'
+					list={['one', 'two', 'thee']}
+					renderListItem={(element, index) => <li key={`${index}${element}`}>{element}</li>}
+				/>
+    )
+}
+
+export default MyComponent;
+
+
+```
 
 If your webpack configuration doesn't support importing of `css stylesheets`, Either Google on how to support it or Copy the contents of these stylesheets manually into your css file.
