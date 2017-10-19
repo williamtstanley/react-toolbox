@@ -7,7 +7,7 @@ This is a react component library containing some commonly used components in ou
 
 ## Installation
 
-To install this Component, run `yarn add tool-box` or `npm install tool-box`.
+~~to install this Component, run `yarn add tool-box` or `npm install tool-box`.~~
 
 If installing the repo locally rather than via npm. run `npm install` or `yarn install` inside the cloned repo.
 The run `npm link` and inside the project you want to be able to import this in run `npm link tool-box`.
