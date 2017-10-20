@@ -2,27 +2,26 @@
 .tool-tip-parent {
   position: relative;
 }
-
 .tool-tip-parent .tool-tip-container {
   position: absolute;
   border-radius: 5px;
   white-space: nowrap;
   left: 50%;
-  transform: translate(-50%, -110%); 
+  transform: translate(-50%, -110%);
   padding: 5px;
-  background-color: blue;
-  color: white;
+  box-shadow: 0 0 5px #888;
+  border: 1px solid #3fa2ee;
+  background-color: white;
 }
-
-.tool-tip-parent .tool-tip-container::after { 
-  content: ''; 
-  border: 5px solid transparent; 
-  border-bottom: 0; 
-  border-top-color: blue; 
-  position: absolute; 
-  top: 100%; 
-  left: 50%; 
-  transform: translate(-50%, 0); 
+.tool-tip-parent .tool-tip-container::after {
+  content: '';
+  border: 5px solid transparent;
+  border-bottom: 0;
+  border-top-color: #3fa2ee;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: transparent;
 }
 /* List styles */
-
