@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Style from './tooltip.css';
+import Style from './tooltip.less';
 
 export default class Tooltip extends Component {
   constructor(props) {
@@ -59,5 +59,3 @@ export default class Tooltip extends Component {
   }
 }
 
-
-        // {this.state.renderTip ? React.cloneElement(this.props.tip) : <div></div>}

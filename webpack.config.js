@@ -27,11 +27,11 @@ const WebpackConfig = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.css$|\.less$/,
         include: APP_DIR,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader'],
+          use: ['css-loader', 'less-loader'],
         }),
       },
     ],
