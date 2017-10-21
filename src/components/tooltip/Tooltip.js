@@ -1,6 +1,6 @@
 import { Component, div, clone } from '../../utils/elements';
 import PropTypes from 'prop-types';
-import Style from './tooltip.less';
+import Style from './tooltip.scss';
 
 export default class Tooltip extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import { e } from '../../utils/elements';
 import { merge } from '../../utils/helpers';
-import Style from './list.less';
+import Style from './list.scss';
 
 const List = ({ listType, list, renderListItem, style, ...props }) => {
   const styles = merge({
