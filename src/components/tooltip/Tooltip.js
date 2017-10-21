@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import { Component, div, clone } from '../../utils/elements';
 import PropTypes from 'prop-types';
 import Style from './tooltip.less';
-
-const div = (props, ...children) => React.createElement('div', props, ...children); 
-const h1 = (props, ...children) => React.createElement('h1', props, ...children); 
-//(react-)hyperscript-helpers uses a similar method to return functions that build elements. Though it may use apply.
 
 export default class Tooltip extends Component {
   constructor(props) {
@@ -40,7 +36,7 @@ export default class Tooltip extends Component {
   }
 
   renderElement() {
-    return React.cloneElement(
+    return clone(
       this.props.tip, 
       { 
         className: this.buildClassName('tool-tip-container', this.props.tip.props),
