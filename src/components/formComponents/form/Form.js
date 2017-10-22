@@ -6,7 +6,7 @@
 
 import Proptypes from 'prop-types';
 import { form, Component, clone, Children } from '../../../utils/elements';
-import { omit, merge } from '../../../utils/helpers';
+import { omit, merge, getStringType } from '../../../utils/helpers';
 
 export default class Form extends Component {
   static Proptypes = {
@@ -35,13 +35,20 @@ export default class Form extends Component {
   //also for that matter there is no reason not to just forward the handleChange 
   //directly rather then stub it.
   cloneWithChange(child) {
-    if (child.type === 'input') {
-      return clone(child, { onChange: this.handleChange });
-    } else if (child.props && child.props.children) {
-      return clone(child, {}, Children.map(child.props.children, this.cloneWithChange));
+    const clonedChild = clone(child, { onChange: this.handleChange });
+    
+    if (typeof child.type === 'function' && getStringType(child) === 'Input') {
+      return clonedChild;
     }
+    if (getStringType(child) === 'input') {
+      return clonedChild;
+    }   
+    // if (child.type === 'input') {
+    // } else if (child.props && child.props.children) {
+    //   return clone(child, {}, Children.map(child.props.children, this.cloneWithChange));
+    // }
 
-    return child;
+    // return child;
   }
 
   renderChildren() {
@@ -49,7 +56,7 @@ export default class Form extends Component {
   }
 
   render() {
-    const exclude = [ 'handleChange', 'handleSubmit' ];
+    const exclude = [ 'handleChange', 'handleSubmit' ]; //don't pass in illegal(non-form) props
 
     return form(omit(exclude, merge({ onSubmit: this.props.handleSubmit }, this.props)), this.renderChildren());
   }
