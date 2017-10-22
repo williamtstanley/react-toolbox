@@ -1,10 +1,5 @@
-/*
- * This is a thought exercise and proof of concept.
- * I do not suggest you actually use this component as it it is not efficient at all to
- * recursively insert props into nested trees of inputs
-*/
-
 import Proptypes from 'prop-types';
+import React from 'react';
 import { form, Component, clone, Children } from '../../../utils/elements';
 import { omit, merge, getStringType } from '../../../utils/helpers';
 
@@ -18,13 +13,13 @@ export default class Form extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderChildren = this.renderChildren.bind(this);
-    this.cloneWithChange = this.cloneWithChange.bind(this);
+    this.recursiveCloneWithChange = this.recursiveCloneWithChange.bind(this);
   }
 
   handleChange({ target: { name, type, checked, value } }) {
     this.props.handleChange({
       [name]: type === 'checkbox' ?
-        checked : value,
+      checked : value,
     });
   }
 
@@ -32,27 +27,28 @@ export default class Form extends Component {
     e.preventDefault();
     this.props.handleSubmit();
   }
-  //also for that matter there is no reason not to just forward the handleChange 
-  //directly rather then stub it.
-  cloneWithChange(child) {
-    const clonedChild = clone(child, { onChange: this.handleChange });
-    
-    if (typeof child.type === 'function' && getStringType(child) === 'Input') {
-      return clonedChild;
-    }
-    if (getStringType(child) === 'input') {
-      return clonedChild;
-    }   
-    // if (child.type === 'input') {
-    // } else if (child.props && child.props.children) {
-    //   return clone(child, {}, Children.map(child.props.children, this.cloneWithChange));
-    // }
 
-    // return child;
+  recursiveCloneWithChange(children, newProps) {
+    return React.Children.map(children, (child) => {
+      var childProps = {};
+      if (React.isValidElement(child)) {
+        const type = getStringType(child)
+        if ((typeof child.type === 'function' && type === 'Input') || type === 'input') {
+          childProps = newProps;
+        }
+      }
+      if (child.props) {
+        // String has no Prop
+        childProps.children = this.recursiveCloneWithChange(child.props.children, newProps);
+        return clone(child, childProps);
+      }
+
+      return child;
+    })
   }
 
   renderChildren() {
-    return Children.map(this.props.children, this.cloneWithChange);
+    return this.recursiveCloneWithChange(this.props.children, { onChange: this.handleChange });
   }
 
   render() {
