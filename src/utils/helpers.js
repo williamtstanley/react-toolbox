@@ -8,11 +8,11 @@ const omit = (arr, obj) => (
 );
 
 const getStringType = (node) => {
-  if (typeof node.type === 'string') return node.type;
-  if (node.type && node.type.displayName) return node.type.displayName;
-  if (node.type && node.type.name) return node.type.name;
+  let name = (typeof node.type === 'string') ? node.type :
+  (node.type && node.type.displayName) ? node.type.displayName :
+    (node.type && node.type.name) ? node.type.name : false;
 
-  return false;
+  return name ? name.toLowerCase() : name;
 };
 
 module.exports = {

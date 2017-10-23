@@ -32,8 +32,7 @@ export default class Form extends Component {
     return React.Children.map(children, (child) => {
       var childProps = {};
       if (React.isValidElement(child)) {
-        const type = getStringType(child)
-        if ((typeof child.type === 'function' && type === 'Input') || type === 'input') {
+        if (getStringType(child).indexOf('input') !== -1) {
           childProps = newProps;
         }
       }
