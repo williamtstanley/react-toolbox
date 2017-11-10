@@ -1,3 +1,4 @@
+const capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}` 
 const merge = (...obj) => Object.assign({}, ...obj);
 const omit = (arr, obj) => (
   Object.keys(obj).reduce((acc, key) => {
@@ -15,8 +16,23 @@ const getStringType = (node) => {
   return name ? name.toLowerCase() : name;
 };
 
+const getLabel = ({ name, labelText }) => labelText || capitalize(name);
+
+const getPlaceholder = (noPlaceHolder, { placeHolder, ...props }) => (
+  merge(
+    noPlaceholder ? 
+      {}, 
+      { 
+        placeHolder: placeHolder || capitalize(props.name), 
+      }
+    props
+  )
+);
+
 module.exports = {
   merge,
   omit,
   getStringType,
+  getLabel,
+  getPlaceholder,
 };

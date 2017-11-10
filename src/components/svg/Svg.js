@@ -1,18 +1,8 @@
-import React from 'react';
-import CombinedSvg from './combinedSvg';
+import { svg, e } from '../../utils/elements';
+import combinedSvg from './combinedSvg';
 
-const Svg = ({ name, title, handleClick, ...props }) => {
-  const Element = CombinedSvg[name];
-
-  return (
-    <svg
-      onClick={handleClick}
-      title={title}
-    >
-      <Element {...props} />
-    </svg>
-  );
-};
+const Svg = ({ name, title, handleClick: onClick, className, ...props }) => (
+  svg({ onClick, className, title}, e(combinedSvg[name], props))
+);
 
 export default Svg;
-

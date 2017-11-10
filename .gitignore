@@ -90,5 +90,5 @@ typings/
 
 # user specific ignores
 .lvimrc
-
+*.swp
 # End of https://www.gitignore.io/api/node,macos
