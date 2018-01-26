@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import uiActions from '../../actions/uiActions';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const ToggleSwitch = ({ toggledOn, onToggle }) => {
-	const classes = ['toggle-switch', (toggledOn ? 'on' : 'off')].join(' ');
+const buildClassList = (arr) => (arr.join(' ').replace(/\s\s+/g, ' '))
+
+const ToggleSwitch = ({ toggledOn, onClick, enabled, className }) => {
+	const classes = buildClassList(['toggle-switch', className, (toggledOn ? 'on' : 'off'), (enabled ? '' : 'disabled')]);
 	
 	return (
 		<div
 			className={classes}
-			onClick={() => onToggle()}
+			onClick={() => onClick()}
 		>
 			<div className="switch-toggle"/>
 		</div>
 	)
 }
 
-@connect(
-	(state, ownProps) => ({
-		toggledOn: state[ownProps.value],
-	}),
-	(dispatch, ownProps) => ({
-		onToggle: () => dispatch(uiActions.toggleValue(ownProps.value))
-	})
-)
-export default class Toggle extends Component {
-	render() {
-		const { toggledOn, onToggle } = this.props;
+ToggleSwitch.propTypes = {
+  toggledOn: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  enabled: PropTypes.bool,
+  className: PropTypes.string
+};
 
-		return (
-			<ToggleSwitch 
-				toggledOn={toggledOn}
-				onToggle={onToggle}
-			/>
-		)
-	}
-}
+ToggleSwitch.defaultProps = {
+  enabled: true,
+  className: '',
+};
+
+
+export default ToggleSwitch;
 
 // STYLES
 // .toggle-switch {
