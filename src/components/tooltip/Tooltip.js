@@ -39,7 +39,7 @@ export default class Tooltip extends Component {
     return clone(
       this.props.tip, 
       { 
-        className: this.buildClassName('tooltip__popup', this.props.tip.props),
+        className: this.buildClassName('tooltip__content', this.props.tip.props),
         style: this.props.tipStyle,
       }
     );
@@ -54,7 +54,10 @@ export default class Tooltip extends Component {
         onMouseLeave: this.handleMouseLeave,
         className: this.buildClassName('tooltip')
       },
-      this.state.renderTip && this.renderElement(),
+      this.state.renderTip && div(
+        {className: 'tooltip__popup'},
+        this.renderElement()
+      ),
       this.props.children,
     );
   }
