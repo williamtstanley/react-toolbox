@@ -1,0 +1,10 @@
+Add compound component:
+Tabs
+  - tabPanel
+    -tab
+  - tablist
+    -tab
+
+use reactClone or context to control the logic in tabs with local state
+
+
