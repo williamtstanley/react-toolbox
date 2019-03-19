@@ -1,0 +1,52 @@
+.carousel {
+  box-sizing: border-box;
+  user-select: none;
+  position: relative;
+  margin-top: 30px;
+  overscroll-behavior-y: contain;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel__animated {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.carousel__animated-slide {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.carousel__page {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel__controls {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel__controls-button {
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.carousel__controls-button:focus {
+  outline: none;
+}

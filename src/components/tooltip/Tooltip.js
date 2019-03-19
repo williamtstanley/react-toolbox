@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { Component, div, clone } from '../../utils/elements';
 import PropTypes from 'prop-types';
-import Style from './tooltip.css';
+import Style from './tooltip.scss';
 
 export default class Tooltip extends Component {
   constructor(props) {
@@ -36,9 +36,12 @@ export default class Tooltip extends Component {
   }
 
   renderElement() {
-    return React.cloneElement(
+    return clone(
       this.props.tip, 
-      { className: this.buildClassName('tool-tip-container', this.props.tip.props)}
+      { 
+        className: this.buildClassName('tooltip__content', this.props.tip.props),
+        style: this.props.tipStyle,
+      }
     );
   }
 
@@ -46,18 +49,17 @@ export default class Tooltip extends Component {
     if (!this.props.tip) {
       return null;
     }
-    return (
-      <div
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        className={this.buildClassName('tool-tip-parent')}
-      >
-        {this.state.renderTip && this.renderElement()}
-        {this.props.children}
-      </div>
-      );
+    return div({
+        onMouseEnter: this.handleMouseEnter,
+        onMouseLeave: this.handleMouseLeave,
+        className: this.buildClassName('tooltip')
+      },
+      this.state.renderTip && div(
+        {className: 'tooltip__popup'},
+        this.renderElement()
+      ),
+      this.props.children,
+    );
   }
 }
 
-
-        // {this.state.renderTip ? React.cloneElement(this.props.tip) : <div></div>}
